@@ -53,3 +53,6 @@ def register(request):
 
 
 	return render(request, 'afridu_app/index.html')
+
+def thanks(request):
+	return render(request, 'afridu_app/thanks.html')
