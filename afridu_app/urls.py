@@ -8,4 +8,5 @@ admin.site.index_title ="Welcome to AFRIDU's Dashboard"
 
 urlpatterns = [
     path('', views.register, name="register"),
+    path('thanks', views.thanks, name="thanks"),
 ]
