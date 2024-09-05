@@ -1,5 +1,4 @@
 asgiref==3.7.2
-backports.zoneinfo
 crispy-bootstrap4==2022.1
 Django
 django-ckeditor==6.6.1
