@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AFRIDU 2024</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css '%}">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block content %}
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static 'images/afridu full.jpg' %}" alt="">
+                </div>
+                <div class="signup-form">
+                    <!-- "https://formsubmit.co/bcf8f75a0c78abf717605e494c6f6d84" -->
+                    <form action="" method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h2 style="text-align: center;">AFRIDU 2024 Registration</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <!-- <input type="hidden" name="_subject" value="New Registration For AFRIDU 2024!!">
+                                <input type="hidden" name="_cc" value="ugo_ebeniro@yahoo.com"> -->
+                                <label for="name">Full Name :</label>
+                                <input type="text" name="name" id="name" placeholder="Full Name as in Passport/Identity" required autocomplete="on"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="nationality">Nationality :</label>
+                                <input type="text" name="nationality" placeholder="Nationality" required autocomplete="on"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">Country :</label>
+                                <input type="text" name="country" placeholder="Country of Residence" id="country" required autocomplete="on"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">Date of Birth</label>
+                                <input type="date" name="dob" id="dob" required autocomplete="on"/>
+                            </div>
+                        <div class="form-group">
+                            <label for="address">Email Address :</label>
+                            <input type="email" name="email" placeholder="Valid Email Address" id="address" required autocomplete="on"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">ID Photo :</label>
+                                <input type="file" name="attachment" accept="image/png, image/jpeg" required/>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">Organization :</label>
+                                <input type="text" name="organization" placeholder="Your Organization" id="organization" required autocomplete="on"/>
+                        </div>
+                        <div class="form-group">
+                                <label for="name">Position :</label>
+                                <input type="text" name="position" placeholder="Position in Organization" id="position" required autocomplete="on"/>
+                        </div>
+                        <div class="form-radio">
+                            <label for="event">Which event are you participating in at the International Gathering in honor of the Africans in diaspora 6th Region:</label>
+                            <select name="event" id="event">
+                                <option value="Registration of Delegates">Registration of Delegates</option>
+                                <option value="Arrival of African Descendants">Arrival of African Descendants</option>
+                                <option value="Chieftancy Titles">Chieftancy Titles</option>
+                                <option value="Eminent Black Women Dinner">Eminent Black Women Dinner</option>
+                                <option value="Presidential Courtesy Visit">Presidential Courtesy Visit</option>
+                                <option value="Presidential Welcoming Reception">Presidential Welcoming Reception</option>
+                                <option value="Launching of the 12 African Apostles/Liberators book by Former President Goodluck Ebele Jonathan, GCFR">Launching of the 12 African Apostles/Liberators book by Former President Goodluck Ebele Jonathan, GCFR</option>
+                                <option value="Presentation of Posthumous Awards to the families of the 12 African Liberators by his Excellency President Bola Ahmed Tinubu GCFR">Presentation of Posthumous Awards to the families of the 12 African Liberators by his Excellency President Bola Ahmed Tinubu GCFR</option>
+                                <option value="Presentation of Nigeria International Passports to deserving African Descendants">Presentation of Nigeria International Passports to deserving African Descendants</option>
+                                <option value="Goodwill Messages">Goodwill Messages</option>
+                                <option value="Cultural display by Various Cultural groups in Africa">Cultural display by Various Cultural groups in Africa</option>
+                                <option value="Music Fiesta">Music Fiesta</option>
+                                <option value="Global African Economic and Investment Summit with 36 State Government plus FCT, Private Sectors and MDAs">Global African Economic and Investment Summit with 36 State Government plus FCT, Private Sectors and MDAs</option>
+                                <option value="NIDCOM Badagry Door of Return Festival 2024">NIDCOM Badagry Door of Return Festival 2024</option>
+                            </select>
+                        </div>
+                        <div class="form-submit">
+                            <!-- <input type="submit" value="Clear All" class="submit" name="reset" id="reset" /> -->
+                            <input type="submit" value="Register" class="submit" id="submit" />
+                            <!-- <input style="background-image: url('afridu banner.jpg');" type="hidden" name="_autoresponse" value="Thank you for registering to attend the upcoming AFRIDU HOMECOMING Event in Abuja, Nigeria. Scheduled to take place from 17th to 27th October 2024.
+
+                            Please note: Your visitor pass will be emailed to you the week before the event. Please ensure you bring it to registration on arrival with a form of identification.
+
+                            AFRIDU Office Address: 13B, Mambila Street off Aso Drive, Abuja.
+
+                            Please note that only VIP delegate pass holders will be permitted to attend all events premises.
+
+                            We look forward to welcoming you to the HOMECOMING EVENT October 16th to 27th 2024 INTERNATIONAL GATHERING IN HONOUR OF AFRICAN DESCENDANTS IN DIASPORA
+                            .............................................................
+                            Yours In Nation Building Arch. Prof, Chidiebere Analechi Ogbu 
+                            AFRIDU Presidential
+                            ................................................................
+
+                            For Delegate, Sponsorship and Exhibition Opportunities please contact: Diplomatic Administrator Dr.Breakforth Onwubuya on +234 803 349 4643 or email AFRIDU.ORG
+
+                            Get the latest updates AFRIDU.ORG..................
+                            "> -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    {% endblock content %}
+
+    <!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

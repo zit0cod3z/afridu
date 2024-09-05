@@ -1,0 +1,4 @@
+afridu_venv/
+afridu_reg/__pycache__/
+afridu_app/__pycache__/
+afridu_app/migrations/__pycache__/
