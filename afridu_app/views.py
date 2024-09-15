@@ -33,7 +33,7 @@ def register(request):
 		qr_code_data = {'name': user_data.name, 'nationality': user_data.nationality, 'country': user_data.country, 'dob': user_data.dob, 'email': user_data.email, 'attachment': user_data.attachment, 'organization': user_data.organization, 'position': user_data.position, 'event': user_data.event, 'submitted_at': user_data.submitted_at}
 		filename = f"qr_code.png"
 		qr_code_path = generate_qr_code(qr_code_data, filename)
-		qr_code_url = f"http://{'127.0.0.1:8000'}{settings.MEDIA_URL}{filename}"
+		# qr_code_url = f"http://{'127.0.0.1:8000'}{settings.MEDIA_URL}{filename}"
 		current_site = get_current_site(request)
 		if settings.DEBUG:
 			qr_code_url = f"http://{current_site.domain}{settings.MEDIA_URL}{filename}"
