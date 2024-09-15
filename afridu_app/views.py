@@ -7,7 +7,12 @@ from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.conf import settings
 from .models import *
-
+from .utils import generate_qr_code
+import base64
+from io import BytesIO
+import os
+import qrcode
+from django.contrib.sites.shortcuts import get_current_site
 
 # Create your views here.
 
@@ -23,6 +28,17 @@ def register(request):
 		position = request.POST.get("position")
 		event = request.POST.get("event")
 		instance = Registration(name=name, nationality=nationality, country=country, dob=dob, email=email, attachment=attachment, organization=organization, position=position, event=event)
+		user_data = Registration.objects.create(name=name, nationality=nationality, country=country, dob=dob, email=email, attachment=attachment, organization=organization, position=position, event=event)
+		# qr = Registration.objects.get(id=qr_id)
+		qr_code_data = {'name': user_data.name, 'nationality': user_data.nationality, 'country': user_data.country, 'dob': user_data.dob, 'email': user_data.email, 'attachment': user_data.attachment, 'organization': user_data.organization, 'position': user_data.position, 'event': user_data.event, 'submitted_at': user_data.submitted_at}
+		filename = f"qr_code.png"
+		qr_code_path = generate_qr_code(qr_code_data, filename)
+		qr_code_url = f"http://{'127.0.0.1:8000'}{settings.MEDIA_URL}{filename}"
+		current_site = get_current_site(request)
+		if settings.DEBUG:
+			qr_code_url = f"http://{current_site.domain}{settings.MEDIA_URL}{filename}"
+		else:
+			qr_code_url = f"https://afridu-registration.onrender.com{settings.MEDIA_URL}{filename}"
 		instance.save()
 
 		# mail = EmailMessage(
@@ -38,7 +54,7 @@ def register(request):
 		welcome_message = name
 
 
-		html_message = render_to_string("afridu_app/email.html")
+		html_message = render_to_string("afridu_app/email.html", {"name": user_data.name, "nationality": user_data.nationality, "country": user_data.country, "dob": user_data.dob, "email": user_data.email, "attachment": user_data.attachment, "organization": user_data.organization, "position": user_data.position, "event": user_data.event, "submitted_at": user_data.submitted_at, "qr_code_url": qr_code_url})
 		plain_message = strip_tags(html_message)
 
 		message = EmailMultiAlternatives(
@@ -50,6 +66,7 @@ def register(request):
 
 		message.attach_alternative(html_message, "text/html")
 		message.send()
+		return render(request, 'afridu_app/thanks.html')
 
 
 	return render(request, 'afridu_app/index.html')

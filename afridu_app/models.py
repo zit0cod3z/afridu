@@ -19,7 +19,7 @@ class Registration(models.Model):
 	submitted_at= models.DateTimeField(auto_now_add=True)
 
 	class Meta():
-		ordering = ('submitted_at',)
+		ordering = ('-submitted_at',)
 
 	def __str__(self):
 		return f'Registration by {self.name} from {self.country} at {self.submitted_at} with image {self.attachment}'
