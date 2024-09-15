@@ -1,0 +1,1 @@
+web: gunicorn afridu_reg.wsgi --log-file
