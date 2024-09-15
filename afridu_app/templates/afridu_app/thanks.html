@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% load static %}
 <html lang="en">
 
 <head>
@@ -62,6 +62,14 @@
 		.bee-divider {
 			overflow: auto
 		}
+		.order-footer {
+		  text-align: center;
+		  line-height: 18px;
+		  font-size: 18px;
+		  margin-bottom: 8px;
+		  font-weight: bold;
+		  color: #999;
+		}
 
 		.bee-divider .center {
 			margin: 0 auto
@@ -82,10 +90,13 @@
 		}
 
 		.bee-row-1 {
-			background-color: #f6f7fc;
-			background-position: top center;
-			background-repeat: no-repeat
-		}
+			background: url(../static/images/afridu bg.jpg) no-repeat;
+    		background-position: center;
+    		background-size: cover;
+    		height: 100vh;
+    		width: 100%;
+    		/* background-position: top center; */
+    	}
 
 		.bee-row-2,
 		.bee-row-2 .bee-row-content {
@@ -163,7 +174,7 @@
 		}
 
 		.bee-row-1 .bee-col-1 .bee-block-4 {
-			color: green;
+			color: whitesmoke;
 			direction: ltr;
 			font-family: "Permanent Marker", Impact, Charcoal, sans-serif;
 			font-size: 24px;
@@ -218,11 +229,12 @@
 						</div>
 					</div>
 					<div class="bee-block bee-block-3 bee-heading">
-						<h1 style="color:green;direction:ltr;font-family:'Permanent Marker', Impact, Charcoal, sans-serif;font-size:31px;font-weight:400;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;"><span class="tinyMce-placeholder">Thank you, we received your registration!<br /></span> </h1>
+						<h1 style="color:whitesmoke;direction:ltr;font-family:'Permanent Marker', Impact, Charcoal, sans-serif;font-size:31px;font-weight:400;letter-spacing:normal;line-height:120%;text-align:center;margin-top:0;margin-bottom:0;"><span class="tinyMce-placeholder">Thank you, we received your registration!<br /></span> </h1>
 					</div>
 					<div class="bee-block bee-block-4 bee-paragraph">
 						<p>Kindly check your mail for the next steps!</p>
 					</div>
+					<div class="order-footer"><a href="{% url 'register' %}">You can close this page!</a></div>
 				</div>
 			</div>
 		</div>
